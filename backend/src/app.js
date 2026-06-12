@@ -11,7 +11,6 @@ const { errorHandler, notFound } = require("./middleware/errorMiddleware");
 const { rateLimiter, sanitizeRequest } = require("./middleware/securityMiddleware");
 
 const app = express();
-const cors = require("cors");
 
 app.use(
   cors({
