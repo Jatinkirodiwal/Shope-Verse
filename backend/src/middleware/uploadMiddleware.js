@@ -27,6 +27,7 @@ const spreadsheetMimeTypes = new Set([
   "text/plain"
 ]);
 
+// Allow .xlsx, .xls, and .csv files
 const spreadsheetExtensions = new Set([".xlsx", ".xls", ".csv"]);
 
 const spreadsheetFileFilter = (req, file, cb) => {
