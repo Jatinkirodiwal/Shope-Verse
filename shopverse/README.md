@@ -1,4 +1,4 @@
-# ⚡ ShopVerse – Modern React eCommerce
+# Creation Corner – Modern React eCommerce
 
 A fully responsive, production-ready eCommerce frontend built with **React + Vite + Tailwind CSS**.
 
@@ -24,8 +24,8 @@ A fully responsive, production-ready eCommerce frontend built with **React + Vit
 - `useParams`, `useSearchParams` — React Router hooks
 - `useMemo` — Memoized filtered products
 - Custom Hooks — `useProducts`, `useDebounce`, `useLocalStorage`
-- Context API — `CartContext`, `WishlistContext`, `ThemeContext`
-- Conditional Rendering — empty states, badges, dark mode
+- Context API — `CartContext`, `WishlistContext`, `AuthContext`
+- Conditional Rendering — empty states and badges
 - Dynamic Rendering — `.map()` for products, categories, nav
 
 ## 📁 Folder Structure
@@ -45,7 +45,6 @@ src/
 ├── context/
 │   ├── CartContext.jsx         ← Cart global state
 │   ├── WishlistContext.jsx     ← Wishlist global state
-│   └── ThemeContext.jsx        ← Dark/light mode
 ├── data/
 │   └── products.js             ← Products & categories data
 ├── hooks/
@@ -100,7 +99,7 @@ const headers = { Authorization: `Bearer ${token}` }
 
 - **React 18** + **Vite 5**
 - **React Router v6**
-- **Tailwind CSS v3** (dark mode, custom animations)
+- **Tailwind CSS v3** (responsive styling and custom animations)
 - **Lucide React** icons
 - **Context API** + `useReducer`
 - **localStorage** persistence

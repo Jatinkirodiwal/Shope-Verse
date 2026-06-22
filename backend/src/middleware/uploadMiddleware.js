@@ -3,12 +3,13 @@ const multer = require("multer");
 const storage = multer.memoryStorage();
 
 const fileFilter = (req, file, cb) => {
-  if (file.mimetype.startsWith("image/")) {
+  const allowedImageTypes = new Set(["image/jpeg", "image/png", "image/webp", "image/gif"]);
+  if (allowedImageTypes.has(file.mimetype)) {
     cb(null, true);
     return;
   }
 
-  cb(new Error("Only image uploads are allowed"), false);
+  cb(new Error("Only JPG, PNG, WebP, and GIF images are allowed"), false);
 };
 
 const upload = multer({

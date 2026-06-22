@@ -1,4 +1,4 @@
-# Shopverse Backend
+# Creation Corner Backend
 
 Express, MongoDB, Mongoose, JWT auth, cart, orders, admin catalog management, and Excel product import APIs.
 
@@ -12,14 +12,14 @@ Create `.env`:
 
 ```env
 PORT=5000
-MONGO_URI=mongodb://127.0.0.1:27017/shopverse
+MONGO_URI=mongodb://127.0.0.1:27017/creation_corner
 JWT_SECRET=replace-with-a-long-random-secret
 JWT_EXPIRE=7d
 CLOUDINARY_CLOUD_NAME=your-cloud-name
 CLOUDINARY_API_KEY=your-api-key
 CLOUDINARY_API_SECRET=your-api-secret
 FRONTEND_URL=http://localhost:5173
-ADMIN_NAME=ShopVerse Admin
+ADMIN_NAME=Creation Corner Admin
 ADMIN_EMAIL=admin@example.com
 ADMIN_PASSWORD=change-this-password
 ADMIN_PHONE=0000000000
@@ -28,7 +28,8 @@ EMAIL_PORT=587
 EMAIL_SECURE=false
 EMAIL_USER=your-smtp-user
 EMAIL_PASS=your-smtp-password
-EMAIL_FROM=ShopVerse <no-reply@example.com>
+EMAIL_FROM=Creation Corner <no-reply@example.com>
+WHATSAPP_ORDER_NUMBER=919876543210
 ```
 
 For Gmail, use:
@@ -86,6 +87,8 @@ POST /api/auth/verify-otp
 POST /api/auth/resend-otp
 POST /api/auth/login
 POST /api/auth/logout
+POST /api/auth/forgot-password
+POST /api/auth/reset-password/:token
 GET /api/auth/profile
 PUT /api/auth/profile
 ```
@@ -122,6 +125,9 @@ Public:
 
 ```http
 GET /api/products
+GET /api/products?active=true
+GET /api/products/featured
+POST /api/products/validate
 GET /api/products/:id
 ```
 
@@ -136,7 +142,7 @@ GET /api/products/imports
 POST /api/products/upload
 ```
 
-Product fields include `name`, `description`, `category`, `price`, `stock`, `sku`, `imageUrl`, `status`, `createdBy`, `createdAt`, and `updatedAt`.
+Product fields include `name`, `description`, optional `heroDescription`, `category`, `price`, `stock`, `sku`, `images`, legacy-compatible `imageUrl`, `status`, `isActive`, `isFeatured`, `createdBy`, `createdAt`, and `updatedAt`. Up to 8 JPG, PNG, WebP, or GIF images (5 MB each) are accepted. Public catalog and featured responses contain active database products only by default.
 
 ### Excel Import
 
@@ -203,7 +209,7 @@ GET /api/orders/admin/all
 PUT /api/orders/:id/status
 ```
 
-Order fields include `customer`, `products`, `totalAmount`, `status`, `paymentStatus`, `shippingAddress`, `createdAt`, and `updatedAt`. Existing `user`, `orderItems`, `totalPrice`, and `orderStatus` fields are still populated for compatibility.
+Order fields include a unique `orderId`, customer contact details, products, subtotal, delivery charge, total amount, pending status, payment status, shipping address, and timestamps. `WHATSAPP_ORDER_NUMBER` must contain the business number in international format without a leading `+`.
 
 ## Security
 

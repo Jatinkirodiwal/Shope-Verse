@@ -1,7 +1,7 @@
 {
   "name": "shopverse-backend",
   "version": "1.0.0",
-  "description": "Express and MongoDB backend for Shopverse e-commerce.",
+  "description": "Express and MongoDB backend for Creation Corner e-commerce.",
   "main": "src/server.js",
   "scripts": {
     

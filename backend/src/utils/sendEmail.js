@@ -35,7 +35,7 @@ const createTransporter = () => {
 const sendEmail = async ({ to, subject, text, html }) => {
   const transporter = createTransporter();
   const info = await transporter.sendMail({
-    from: process.env.EMAIL_FROM || "ShopVerse <no-reply@shopverse.local>",
+    from: process.env.EMAIL_FROM || "Creation Corner <no-reply@creationcorner.local>",
     to,
     subject,
     text,

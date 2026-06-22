@@ -43,7 +43,7 @@ app.use(sanitizeRequest);
 app.get("/", (req, res) => {
   res.status(200).json({
     success: true,
-    message: "Shopverse API is running"
+    message: "Creation Corner API is running"
   });
 });
 
