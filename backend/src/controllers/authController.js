@@ -74,6 +74,7 @@ const setUserOtp = async (user) => {
 };
 
 const register = async (req, res, next) => {
+  console.log("REGISTER HIT");
   try {
     const { name, email, password, phone } = req.body;
     const normalizedEmail = normalizeEmail(email);
